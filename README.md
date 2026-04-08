@@ -38,6 +38,12 @@ uvicorn app.main:app --reload
 
 Open [http://localhost:8000](http://localhost:8000).
 
+## UI preview
+
+Current dashboard look:
+
+![Dashboard UI preview](docs/images/ui-preview.png)
+
 You can also start the app directly with:
 
 ```bash

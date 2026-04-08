@@ -10,27 +10,47 @@
     <div class="page-shell">
       <section class="hero-panel">
         <div class="hero-copy">
-          <p class="eyebrow">Predictive Analytics for Investment Teams</p>
+          <p class="eyebrow">Analytics for investment teams</p>
           <h1>{{ project_name }}</h1>
           <p class="hero-text">
-            Forecast fund performance, detect portfolio risk signals, and monitor model quality from one workspace powered by
-            FastAPI, Scikit-learn, XGBoost, and PyTorch.
+            Explore a portfolio scenario, review model signals, and move from uncertainty to a clearer next step with a
+            dashboard designed to feel steady and readable.
           </p>
           <div class="hero-badges">
-            <span>Real-time inference</span>
-            <span>Automated feature engineering</span>
-            <span>Docker-ready deployment</span>
+            <span>Clear scenario review</span>
+            <span>Measured risk signals</span>
+            <span>Transparent model checks</span>
           </div>
         </div>
-        <div class="hero-metrics">
-          <article class="metric-card">
-            <p class="metric-label">Version</p>
-            <p class="metric-value">{{ version }}</p>
+
+        <div class="hero-aside">
+          <article class="metric-card promise-card">
+            <p class="metric-label">What this workspace supports</p>
+            <div class="promise-list">
+              <div>
+                <strong>Understand the backdrop</strong>
+                <p>Capture market conditions, benchmark context, and fund characteristics in one guided form.</p>
+              </div>
+              <div>
+                <strong>See signals quickly</strong>
+                <p>Review return outlook, risk probability, and the main pressure points without hunting through raw output.</p>
+              </div>
+              <div>
+                <strong>Build confidence</strong>
+                <p>Check leaderboard metrics and sample scenarios to understand how the models are behaving.</p>
+              </div>
+            </div>
           </article>
-          <article class="metric-card accent">
-            <p class="metric-label">Workflow</p>
-            <p class="metric-value">Train -> Score -> Explain</p>
-          </article>
+          <div class="hero-metrics">
+            <article class="metric-card compact-card">
+              <p class="metric-label">Version</p>
+              <p class="metric-value">{{ version }}</p>
+            </article>
+            <article class="metric-card compact-card accent">
+              <p class="metric-label">Workflow</p>
+              <p class="metric-value">Frame -> Review -> Decide</p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -38,156 +58,203 @@
         <article class="panel">
           <div class="panel-header">
             <div>
-              <p class="section-label">Live Inference</p>
-              <h2>Portfolio Scenario</h2>
+              <p class="section-label">Scenario Builder</p>
+              <h2>Describe the portfolio context</h2>
+              <p class="panel-intro">Start with a realistic baseline, then adjust only the factors you want to pressure-test.</p>
             </div>
-            <button id="predict-button" class="primary-button" type="button">Run Prediction</button>
+            <button id="predict-button" class="primary-button" type="button">Review Scenario</button>
           </div>
-          <form id="prediction-form" class="form-grid">
-            <label>
-              Market Regime
-              <select name="market_regime">
-                <option value="bull">Bull</option>
-                <option value="sideways">Sideways</option>
-                <option value="volatile">Volatile</option>
-                <option value="bear">Bear</option>
-              </select>
-            </label>
-            <label>
-              Asset Class
-              <select name="asset_class">
-                <option value="equity">Equity</option>
-                <option value="fixed_income">Fixed income</option>
-                <option value="multi_asset">Multi asset</option>
-                <option value="alternatives">Alternatives</option>
-              </select>
-            </label>
-            <label>
-              Region
-              <select name="region">
-                <option value="US">US</option>
-                <option value="Europe">Europe</option>
-                <option value="APAC">APAC</option>
-                <option value="Emerging">Emerging</option>
-              </select>
-            </label>
-            <label>
-              Fund Size (mn)
-              <input name="fund_size_mn" type="number" value="1800" step="10" />
-            </label>
-            <label>
-              Expense Ratio
-              <input name="expense_ratio" type="number" value="0.82" step="0.01" />
-            </label>
-            <label>
-              Sharpe Ratio
-              <input name="sharpe_ratio" type="number" value="1.1" step="0.01" />
-            </label>
-            <label>
-              Alpha
-              <input name="alpha" type="number" value="0.04" step="0.01" />
-            </label>
-            <label>
-              Beta
-              <input name="beta" type="number" value="1.02" step="0.01" />
-            </label>
-            <label>
-              Volatility 30d
-              <input name="nav_volatility_30d" type="number" value="0.14" step="0.01" />
-            </label>
-            <label>
-              Drawdown 90d
-              <input name="drawdown_90d" type="number" value="-0.08" step="0.01" />
-            </label>
-            <label>
-              Portfolio Concentration
-              <input name="portfolio_concentration" type="number" value="0.31" step="0.01" />
-            </label>
-            <label>
-              Liquidity Score
-              <input name="liquidity_score" type="number" value="0.74" step="0.01" />
-            </label>
-            <label>
-              Benchmark Return 30d
-              <input name="benchmark_return_30d" type="number" value="0.03" step="0.01" />
-            </label>
-            <label>
-              Benchmark Return 90d
-              <input name="benchmark_return_90d" type="number" value="0.07" step="0.01" />
-            </label>
-            <label>
-              Earnings Revision
-              <input name="earnings_revision" type="number" value="0.15" step="0.01" />
-            </label>
-            <label>
-              Macro Signal
-              <input name="macro_signal" type="number" value="0.20" step="0.01" />
-            </label>
-            <label>
-              Style Momentum
-              <input name="style_momentum" type="number" value="0.08" step="0.01" />
-            </label>
-            <label>
-              Inflow Trend
-              <input name="inflow_trend" type="number" value="0.06" step="0.01" />
-            </label>
-            <label>
-              ESG Score
-              <input name="esg_score" type="number" value="68" step="1" />
-            </label>
-            <label>
-              FX Exposure
-              <input name="fx_exposure" type="number" value="0.11" step="0.01" />
-            </label>
-            <label>
-              Tracking Error
-              <input name="tracking_error" type="number" value="0.06" step="0.01" />
-            </label>
-            <label>
-              Fund Age (years)
-              <input name="fund_age_years" type="number" value="7" step="0.5" />
-            </label>
-            <label>
-              Turnover Ratio
-              <input name="turnover_ratio" type="number" value="0.42" step="0.01" />
-            </label>
+
+          <div class="support-banner">
+            <strong>Suggested approach</strong>
+            <p>Keep inputs close to current conditions first, then test one or two deliberate changes to see how the signal shifts.</p>
+          </div>
+
+          <form id="prediction-form" class="scenario-form">
+            <section class="form-section">
+              <div class="form-section-header">
+                <p class="section-label">Market Context</p>
+                <h3>Backdrop and benchmarks</h3>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Market Regime
+                  <select name="market_regime">
+                    <option value="bull">Bull</option>
+                    <option value="sideways">Sideways</option>
+                    <option value="volatile">Volatile</option>
+                    <option value="bear">Bear</option>
+                  </select>
+                </label>
+                <label>
+                  Region
+                  <select name="region">
+                    <option value="US">US</option>
+                    <option value="Europe">Europe</option>
+                    <option value="APAC">APAC</option>
+                    <option value="Emerging">Emerging</option>
+                  </select>
+                </label>
+                <label>
+                  Asset Class
+                  <select name="asset_class">
+                    <option value="equity">Equity</option>
+                    <option value="fixed_income">Fixed income</option>
+                    <option value="multi_asset">Multi asset</option>
+                    <option value="alternatives">Alternatives</option>
+                  </select>
+                </label>
+                <label>
+                  Benchmark Return 30d
+                  <input name="benchmark_return_30d" type="number" value="0.03" step="0.01" />
+                </label>
+                <label>
+                  Benchmark Return 90d
+                  <input name="benchmark_return_90d" type="number" value="0.07" step="0.01" />
+                </label>
+                <label>
+                  Macro Signal
+                  <input name="macro_signal" type="number" value="0.20" step="0.01" />
+                </label>
+                <label>
+                  Earnings Revision
+                  <input name="earnings_revision" type="number" value="0.15" step="0.01" />
+                </label>
+                <label>
+                  Style Momentum
+                  <input name="style_momentum" type="number" value="0.08" step="0.01" />
+                </label>
+                <label>
+                  Inflow Trend
+                  <input name="inflow_trend" type="number" value="0.06" step="0.01" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="form-section-header">
+                <p class="section-label">Fund Profile</p>
+                <h3>Structure and performance quality</h3>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Fund Size (mn)
+                  <input name="fund_size_mn" type="number" value="1800" step="10" />
+                </label>
+                <label>
+                  Fund Age (years)
+                  <input name="fund_age_years" type="number" value="7" step="0.5" />
+                </label>
+                <label>
+                  Expense Ratio
+                  <input name="expense_ratio" type="number" value="0.82" step="0.01" />
+                </label>
+                <label>
+                  Sharpe Ratio
+                  <input name="sharpe_ratio" type="number" value="1.1" step="0.01" />
+                </label>
+                <label>
+                  Alpha
+                  <input name="alpha" type="number" value="0.04" step="0.01" />
+                </label>
+                <label>
+                  Beta
+                  <input name="beta" type="number" value="1.02" step="0.01" />
+                </label>
+                <label>
+                  ESG Score
+                  <input name="esg_score" type="number" value="68" step="1" />
+                </label>
+                <label>
+                  Turnover Ratio
+                  <input name="turnover_ratio" type="number" value="0.42" step="0.01" />
+                </label>
+                <label>
+                  Liquidity Score
+                  <input name="liquidity_score" type="number" value="0.74" step="0.01" />
+                </label>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="form-section-header">
+                <p class="section-label">Risk Pressure</p>
+                <h3>Volatility, concentration, and exposure</h3>
+              </div>
+              <div class="form-grid">
+                <label>
+                  Volatility 30d
+                  <input name="nav_volatility_30d" type="number" value="0.14" step="0.01" />
+                </label>
+                <label>
+                  Drawdown 90d
+                  <input name="drawdown_90d" type="number" value="-0.08" step="0.01" />
+                </label>
+                <label>
+                  Portfolio Concentration
+                  <input name="portfolio_concentration" type="number" value="0.31" step="0.01" />
+                </label>
+                <label>
+                  FX Exposure
+                  <input name="fx_exposure" type="number" value="0.11" step="0.01" />
+                </label>
+                <label>
+                  Tracking Error
+                  <input name="tracking_error" type="number" value="0.06" step="0.01" />
+                </label>
+              </div>
+            </section>
           </form>
         </article>
 
         <article class="panel results-panel">
           <div class="panel-header">
             <div>
-              <p class="section-label">Scoring Output</p>
-              <h2>Prediction Snapshot</h2>
+              <p class="section-label">Scenario Readout</p>
+              <h2>Balanced summary</h2>
+              <p class="panel-intro">A calmer view of return expectations, risk level, and what appears to matter most.</p>
             </div>
-            <span id="status-pill" class="status-pill">Loading models</span>
+            <span id="status-pill" class="status-pill status-loading">Preparing models</span>
           </div>
+
+          <div class="results-highlight">
+            <div>
+              <p class="section-label">Current takeaway</p>
+              <h3 id="result-summary-title">Building your first view</h3>
+            </div>
+            <p id="result-summary" class="result-summary">
+              The dashboard is loading model context and will summarize the scenario once the first score is ready.
+            </p>
+          </div>
+
           <div class="result-cards">
             <article class="result-card">
-              <p class="metric-label">Forecasted Return</p>
+              <p class="metric-label">Expected 90-day return</p>
               <p id="forecast-return" class="result-value">--</p>
             </article>
             <article class="result-card">
-              <p class="metric-label">Risk Probability</p>
+              <p class="metric-label">Estimated risk probability</p>
               <p id="risk-probability" class="result-value">--</p>
             </article>
             <article class="result-card">
-              <p class="metric-label">Risk Level</p>
+              <p class="metric-label">Overall risk posture</p>
               <p id="risk-level" class="result-value">--</p>
             </article>
           </div>
+
           <div class="bars-grid">
             <div>
-              <p class="chart-label">Return Model Agreement</p>
+              <p class="chart-label">Return model alignment</p>
               <div id="regression-bars" class="mini-bars"></div>
             </div>
             <div>
-              <p class="chart-label">Risk Model Agreement</p>
+              <p class="chart-label">Risk model alignment</p>
               <div id="classification-bars" class="mini-bars"></div>
             </div>
           </div>
+
           <div>
-            <p class="chart-label">Top Risk Drivers</p>
+            <p class="chart-label">Primary watchpoints</p>
             <div id="risk-drivers" class="driver-list"></div>
           </div>
         </article>
@@ -197,23 +264,25 @@
         <article class="panel">
           <div class="panel-header">
             <div>
-              <p class="section-label">Training Diagnostics</p>
-              <h2>Model Leaderboard</h2>
+              <p class="section-label">Model Confidence</p>
+              <h2>Leaderboard and refresh</h2>
+              <p class="panel-intro">Use these diagnostics to understand whether the forecasting stack is acting consistently.</p>
             </div>
-            <button id="refresh-metrics" class="ghost-button" type="button">Refresh</button>
+            <button id="refresh-metrics" class="ghost-button" type="button">Refresh View</button>
           </div>
           <div id="leaderboards" class="leaderboards"></div>
           <div class="retrain-bar">
             <button id="train-button" class="primary-button secondary-tone" type="button">Retrain Sample Models</button>
-            <p class="footnote">Retraining refreshes the synthetic dataset, artifacts, and dashboard metrics.</p>
+            <p class="footnote">Retraining updates the synthetic dataset, model artifacts, and the dashboard readout.</p>
           </div>
         </article>
 
         <article class="panel">
           <div class="panel-header">
             <div>
-              <p class="section-label">Operational View</p>
-              <h2>Sample Risk Signals</h2>
+              <p class="section-label">Observed Patterns</p>
+              <h2>Sample risk signals</h2>
+              <p class="panel-intro">A quick scan of recent example scenarios to help anchor the current result.</p>
             </div>
           </div>
           <div id="sample-table" class="table-shell"></div>
@@ -224,4 +293,3 @@
     <script src="/static/app.js"></script>
   </body>
 </html>
-
