@@ -1,0 +1,2 @@
+"""Investment analytics platform package."""
+
